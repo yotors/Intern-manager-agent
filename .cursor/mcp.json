@@ -8,6 +8,15 @@
           "C:\\Users\\habtetsega\\OneDrive\\Desktop\\agent\\Intern-manager-agent\\uv",
           "src/mcp_server.py"
         ]
+      },
+      "Attendance":{
+        "command": "uv",
+        "args": [
+          "run",
+          "--directory",
+          "C:\\Users\\habtetsega\\OneDrive\\Desktop\\agent\\Intern-manager-agent\\uv",
+          "src/mcp_attendance.py"
+        ]
       }
     }
   }

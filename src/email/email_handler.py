@@ -8,8 +8,7 @@ from datetime import datetime, timedelta
 import base64
 
 # Scope for sending emails
-SCOPES = ['https://www.googleapis.com/auth/gmail.send', 'https://www.googleapis.com/auth/gmail.readonly', 'https://www.googleapis.com/auth/forms.responses.readonly', 'https://www.googleapis.com/auth/forms.body']
-
+SCOPES = ['https://www.googleapis.com/auth/gmail.send', 'https://www.googleapis.com/auth/gmail.readonly', 'https://www.googleapis.com/auth/forms.responses.readonly', 'https://www.googleapis.com/auth/forms.body', "https://www.googleapis.com/auth/drive"]
 class EmailHandler:
     def __init__(self, username, password, smtp_server, smtp_port):
         self.username = username

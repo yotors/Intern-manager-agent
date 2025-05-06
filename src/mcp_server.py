@@ -65,7 +65,7 @@ def send_exam_schedule(applicants:list, exam_date:str):
         exam_date (str): The date and time of the exam in ISO format.
 
     Returns:
-        None
+        Bool
     """
     return email.send_exam_schedule(applicants, exam_date)
 
@@ -93,35 +93,6 @@ def get_next_exam_date():
             Example: "2024-06-15T10:00:00"
     """
     return calendar.get_next_exam_date()
-
-@mcp.tool()
-def get_exam_end_time(start_time:str):
-    """
-    Calculate the end time of an exam given its start time.
-
-    Parameters:
-        start_time (str): The start time of the exam in ISO format.
-            Example: "2024-06-15T10:00:00"
-
-    Returns:
-        str: The calculated end time in ISO format.
-            Example: "2024-06-15T12:00:00"
-    """
-    return calendar.get_exam_end_time(start_time)
-
-@mcp.tool()
-def is_time_slot_available(date_time:str):
-    """
-    Check if a specific date and time slot is available for scheduling an exam.
-
-    Parameters:
-        date_time (str): The date and time to check in ISO format.
-            Example: "2024-06-15T10:00:00"
-
-    Returns:
-        bool: True if the slot is available, False otherwise.
-    """
-    return calendar.is_time_slot_available(date_time)
 
 @mcp.tool()
 def analyze_profile(github_urls:list):
