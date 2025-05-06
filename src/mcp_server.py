@@ -41,47 +41,47 @@ def submitions():
     return form.get_submissions()
 
 @mcp.tool()
-def send_email(applicant):
+def send_email(applicants:list):
     """
-    Send a confirmation email to an applicant.
+    Send a confirmation email to applicants.
 
     Parameters:
-        applicant (dict): The applicant's information. This is a dictionary containing applicant details such as name and email.
-            Example: {"name": "John Doe", "email": "applicant@example.com"}
+        applicants (list): List of applicants' information. This is a list of dictionary containing applicants details such as name and email.
+            Example: [{"name": "John Doe", "email": "applicant@example.com"}, {"name": "John Doe", "email": "applicant@example.com"}]
 
     Returns:
-        None
+        Bool
     """
-    return email.send_confirmation_email(applicant)
+    return email.send_confirmation_email(applicants)
 
 @mcp.tool()
-def send_exam_schedule(applicant, exam_date):
+def send_exam_schedule(applicants:list, exam_date:str):
     """
     Send an exam schedule to an applicant.
 
     Parameters:
-        applicant (str or dict): The applicant's information dict with details.
-            Example: "applicant@example.com" or {"name": "Jane Doe", "email": "applicant@example.com"}
-        exam_date (datetime.date): The date and time of the exam in ISO format.
+        applicants (list): The applicants' information list of dict with details.
+            Example: [{"name": "Jane Doe", "email": "applicant@example.com"}, {"name": "John Doe", "email": "applicant@example.com"}]
+        exam_date (str): The date and time of the exam in ISO format.
 
     Returns:
         None
     """
-    return email.send_exam_schedule(applicant, exam_date)
+    return email.send_exam_schedule(applicants, exam_date)
 
 @mcp.tool()
-def check_confirmation(applicant_email):
+def check_confirmation(applicants_emails:list):
     """
-    Check if an applicant has confirmed their participation via email.
+    Check if applicant had confirmed their participation via email.
 
     Parameters:
-        applicant_email (str): The email address of the applicant.
-            Example: "applicant@example.com"
+        applicants_emails (list): The list of email of addresses of the applicants.
+            Example: ["applicant@example.com", "applicant1@example.com"]
 
     Returns:
         bool: True if confirmed, False otherwise.
     """ 
-    return email.check_confirmation(applicant_email)
+    return email.check_confirmation(applicants_emails)
 
 @mcp.tool()
 def get_next_exam_date():
@@ -95,7 +95,7 @@ def get_next_exam_date():
     return calendar.get_next_exam_date()
 
 @mcp.tool()
-def get_exam_end_time(start_time):
+def get_exam_end_time(start_time:str):
     """
     Calculate the end time of an exam given its start time.
 
@@ -110,7 +110,7 @@ def get_exam_end_time(start_time):
     return calendar.get_exam_end_time(start_time)
 
 @mcp.tool()
-def is_time_slot_available(date_time):
+def is_time_slot_available(date_time:str):
     """
     Check if a specific date and time slot is available for scheduling an exam.
 
@@ -124,21 +124,21 @@ def is_time_slot_available(date_time):
     return calendar.is_time_slot_available(date_time)
 
 @mcp.tool()
-def analyze_profile(github_url):
+def analyze_profile(github_urls:list):
     """
-    Analyze a GitHub profile for relevant skills and activity.
+    Analyze GitHub profiles for relevant skills and activity.
 
     Parameters:
-        github_url (str): The URL of the applicant's GitHub profile.
-            Example: "https://github.com/username"
+        github_urls (list): The URL of the applicant's GitHub profile.
+            Example: ["https://github.com/username", "https://github.com/username2"]
 
     Returns:
-        dict: Analysis results including skills, activity, and project highlights.
+        list of dicts: Analysis results including skills, activity, and project highlights.
     """
-    return github.analyze_profile(github_url)
+    return github.analyze_profile(github_urls)
 
 @mcp.tool()
-def rank_and_select(submissions):
+def rank_and_select(submissions:list):
     """
     Rank and select the top applicants based on their submissions.
 

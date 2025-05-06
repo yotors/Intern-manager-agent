@@ -37,7 +37,7 @@ class GitHubAnalyzer:
                     'contribution_count': contribution_data,
                     'error': None
                 })
-            
+            return {"Number": len(applicants), "list":applicants}
         except Exception as e:
             return {
                 'error': str(e),
