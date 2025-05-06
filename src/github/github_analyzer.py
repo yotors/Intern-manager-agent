@@ -7,32 +7,36 @@ class GitHubAnalyzer:
     def __init__(self, token):
         self.github = Github(token)
 
-    def analyze_profile(self, github_url):
+    def analyze_profile(self, github_urls):
         """Analyze a GitHub profile and return relevant metrics."""
         try:
             # Extract username from GitHub URL
-            username = self._extract_username(github_url)
-            if not username:
-                return {
-                    'error': 'Invalid GitHub URL',
-                    'repo_count': 0,
-                    'contribution_count': 0,
-                    'heatmap_data': {}
-                }
+            applicants = []
+            for github_url in github_urls:
+                username = self._extract_username(github_url)
+                if not username:
+                    applicants.append( {
+                        'username': username,
+                        'error': 'Invalid GitHub URL',
+                        'repo_count': 0,
+                        'contribution_count': 0,
+                        'heatmap_data': {}
+                    })
+                    continue
 
-            user = self.github.get_user(username)
-            
-            # Get repository count
-            repo_count = user.public_repos
-            
-            # Get contribution data
-            contribution_data = self._get_contribution_data(username)
-            
-            return {
-                'repo_count': repo_count,
-                'contribution_count': contribution_data,
-                'error': None
-            }
+                user = self.github.get_user(username)
+                
+                # Get repository count
+                repo_count = user.public_repos
+                
+                # Get contribution data
+                contribution_data = self._get_contribution_data(username)
+
+                applicants.append({
+                    'repo_count': repo_count,
+                    'contribution_count': contribution_data,
+                    'error': None
+                })
             
         except Exception as e:
             return {

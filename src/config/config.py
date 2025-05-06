@@ -20,3 +20,5 @@ GITHUB_TOKEN = os.getenv('GITHUB_TOKEN', '')
 
 # Application Configuration
 MAX_INTERNS = int(os.getenv('MAX_INTERNS', '10')) 
+MIN_REPOS = 2
+MIN_CONTRIBUTIONS = 5

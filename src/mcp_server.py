@@ -47,7 +47,7 @@ def send_email(applicant):
 
     Parameters:
         applicant (dict): The applicant's information. This is a dictionary containing applicant details such as name and email.
-            Example: "applicant@example.com" or {"name": "John Doe", "email": "applicant@example.com"}
+            Example: {"name": "John Doe", "email": "applicant@example.com"}
 
     Returns:
         None
@@ -62,8 +62,7 @@ def send_exam_schedule(applicant, exam_date):
     Parameters:
         applicant (str or dict): The applicant's information dict with details.
             Example: "applicant@example.com" or {"name": "Jane Doe", "email": "applicant@example.com"}
-        exam_date (str): The date and time of the exam in ISO format.
-            Example: "2024-06-15T10:00:00"
+        exam_date (datetime.date): The date and time of the exam in ISO format.
 
     Returns:
         None
@@ -81,7 +80,7 @@ def check_confirmation(applicant_email):
 
     Returns:
         bool: True if confirmed, False otherwise.
-    """
+    """ 
     return email.check_confirmation(applicant_email)
 
 @mcp.tool()
@@ -144,7 +143,7 @@ def rank_and_select(submissions):
     Rank and select the top applicants based on their submissions.
 
     Parameters:
-        submissions (list): A list of applicant submissions to be ranked.
+        submissions (python list): A list of applicant submissions to be ranked.
             Example: [{"name": "John Doe", "repo_count": 1, "contribution_count": 2, "error":False}, {"name": "Jane Doe", "score": 90}]
 
     Returns:

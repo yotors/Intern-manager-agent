@@ -1,0 +1,6 @@
+.env
+credentials.json
+client_secrets.json
+src/test.py
+token.json
+token.pickle
